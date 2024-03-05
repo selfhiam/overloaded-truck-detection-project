@@ -28,3 +28,4 @@ function uploadVideo(event) {
         console.error('Error:', error);
     });
 }
+
