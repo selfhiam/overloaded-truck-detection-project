@@ -13,8 +13,13 @@ section { width: 100%; height: 100%; margin: 20px 0; border-top: solid #1A548F 1
 
 .section1 .realtime-wrap .img-box #video { width: 100%;  height: 100%; }
 
-.section1 .realtime-wrap .cap-box { width: 48.5%; height: 410px; border: solid #1A548F 1px; }
+.section1 .realtime-wrap .cap-box { width: 48.5%; height: 410px; border: solid #1A548F 1px; overflow-y: scroll; }
 
+.section1 .cap-box #list-box { width: 90%; display: flex; flex-direction: row; flex-wrap: wrap; margin: auto;}
+.section1 .cap-box #list-box .img-mini-box { width: 30%; height: 120px; border: solid red 2px; margin: 1%; cursor: pointer; }
+
+.section1 .cap-box #list-box .img-mini-box:hover { background-color: lightgray; }
+.section1 .cap-box img { width: 100%; height: 100%; }
 .section2 .detail-wrap { display: flex; border: solid #1A548F 1px; }
 .section2 .subimg-box { width: 50%; height: 200px; border-right: solid #1A548F 2px; display: flex; flex-direction: row; justify-content: space-between; padding: 20px; }
 
