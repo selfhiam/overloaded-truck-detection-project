@@ -27,27 +27,25 @@
                 </div>
                 <!-- 캡쳐 확인 영역 -->
                 <div class="cap-box">
-                    <ul>
-                        <li class="img-mini-box">
-                            <div class="img1"></div>
-                        </li>
+                    <ul id="list-box">
+                        <!-- 캡쳐 이미지 띄워질 영역 -->
                     </ul>
                 </div>
             </div>
         </section>
-        <!-- 상세 기록 확인 영역 -->
-        <header class="header2">
-            <h2>상세 기록 확인</h2>
+        <!-- 상세 기록 확인 영역 --> 
+        <header class="header2"> 
+            <h2>상세 기록 확인</h2>   
         </header>
         <section class="section2">
             <div class="detail-wrap">
-                <!-- 이미지 출력 영역 -->
+                <!-- 이미지 출력 영역 --> 
                 <div class="subimg-box">
                     <div class="img-box2">
-
+                        <img src="" alt="" id="sub-img">
                     </div>
                     <div class="plate">
-                    
+                        <img src="" alt="" id="plate">
                     </div>
                     <div class="plate-text">
                         
@@ -57,56 +55,10 @@
                 
                 <!-- 로그 출력 영역 -->
                 <ul class="log-box">
-                    <ul>
-                        <li>
-                            날짜
-                        </li>
-                        <li>
-                            2024-03-13
-                        </li>
-                    </ul>
-                    <ul>
-                        <li>
-                            시간
-                        </li>
-                        <li>
-                            13:00:00
-                        </li>
-                    </ul>
+
                 </ul>
             </div>
         </section>
     </main>
-    <!-- <script>
-        function uploadVideo(event) {
-            event.preventDefault();
-            var fileInput = document.getElementById('videoInput');
-            var file = fileInput.files[0];
-            if (!file) {
-                console.error('No file selected');
-                return;
-            }
-            var formData = new FormData();
-            formData.append('video', file);
-            fetch('http://127.0.0.1:8000/upload_video', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => {
-                if (response.ok) {
-                    console.log('Video uploaded successfully');
-                    const video = document.getElementById('video');
-                    console.log(file.name)
-                    videoUrl = 'http://127.0.0.1:8000/video/?query=${file.name}'
-                    video.src = videoUrl;
-                } else {
-                    console.error('Failed to upload video');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
-        }
-    </script> -->
 </body>
 </html>
