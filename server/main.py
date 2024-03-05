@@ -46,6 +46,11 @@ def main_page(request: Request):
   return templates.TemplateResponse('index.html', context={'request':request})
 
 
+folder_name = "videos"
+
+if not os.path.exists(folder_name):
+    os.makedirs(folder_name)
+
 UPLOAD_DIRECTORY = "./videos"
 @app.post("/upload_video")
 async def upload_video(video: UploadFile = File(...)):
