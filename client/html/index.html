@@ -7,6 +7,10 @@
     <title>Document</title>
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/layout.css">
+    <script src="../js/index.js"></script>
+    <style>
+        #video {width: 400px; height: 300px;}
+    </style>
 </head>
 <body>
     <main>
@@ -20,7 +24,10 @@
             <div class="realtime-wrap">
                 <!-- 영상 출력 영역-->
                 <div class="img-box">
-                    <button type="button" onclick="alert()" class="input-btn">영상/이미지 선택</button>
+                    <input type="file" id="videoInput">
+                    <button type="button" onclick="uploadVideo(event)">Upload</button>
+                    <!-- <button type="button" onclick="alert()" class="input-btn">영상/이미지 선택</button> -->
+                    <img id="video"></img> 
                 </div>
                 <!-- 캡쳐 확인 영역 -->
                 <div class="cap-box">
@@ -74,5 +81,36 @@
             </div>
         </section>
     </main>
+    <!-- <script>
+        function uploadVideo(event) {
+            event.preventDefault();
+            var fileInput = document.getElementById('videoInput');
+            var file = fileInput.files[0];
+            if (!file) {
+                console.error('No file selected');
+                return;
+            }
+            var formData = new FormData();
+            formData.append('video', file);
+            fetch('http://127.0.0.1:8000/upload_video', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Video uploaded successfully');
+                    const video = document.getElementById('video');
+                    console.log(file.name)
+                    videoUrl = 'http://127.0.0.1:8000/video/?query=${file.name}'
+                    video.src = videoUrl;
+                } else {
+                    console.error('Failed to upload video');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        }
+    </script> -->
 </body>
 </html>
