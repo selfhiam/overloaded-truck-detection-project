@@ -8,42 +8,38 @@
     <link rel="stylesheet" href="../css/reset.css">
     <link rel="stylesheet" href="../css/layout.css">
     <script src="../js/index.js"></script>
-    <style>
-        #video {width: 400px; height: 300px;}
-    </style>
+    <script src="../js/cap.js"></script>
 </head>
 <body>
     <main>
         <!-- 실시간 감지화면 영역 -->
-        <header>
-            <h2>실시간 감지화면</h2>
-            <h3>경로: </h3>
-            <button type="button" onclick="" class="dir-btn">선택</button>
+        <header class="header1">
+            <h2>실시간 감지화면</h2><br>
+            <input type="file" id="videoInput" class="file-input">
+            <button type="button" onclick="uploadVideo(event)" class="upload-btn">업로드</button>
+            
         </header>
-        <section>
+        <section class="section1">
             <div class="realtime-wrap">
                 <!-- 영상 출력 영역-->
                 <div class="img-box">
-                    <input type="file" id="videoInput">
-                    <button type="button" onclick="uploadVideo(event)">Upload</button>
-                    <!-- <button type="button" onclick="alert()" class="input-btn">영상/이미지 선택</button> -->
                     <img id="video"></img> 
                 </div>
                 <!-- 캡쳐 확인 영역 -->
                 <div class="cap-box">
                     <ul>
                         <li class="img-mini-box">
-                            
+                            <div class="img1"></div>
                         </li>
                     </ul>
                 </div>
             </div>
         </section>
         <!-- 상세 기록 확인 영역 -->
-        <header>
+        <header class="header2">
             <h2>상세 기록 확인</h2>
         </header>
-        <section>
+        <section class="section2">
             <div class="detail-wrap">
                 <!-- 이미지 출력 영역 -->
                 <div class="subimg-box">
