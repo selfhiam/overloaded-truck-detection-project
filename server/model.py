@@ -34,19 +34,24 @@ def get_stream_video(query):
             yield (b'--frame\r\n' b'Content-Type: image/jpeg\r\n\r\n' +
                bytearray(frame) + b'\r\n')
             
+download = False
+cnt = 0
+current_time = 0
+current_folder = None
+
 def visualize_prediction(image, prediction):
+    global download, cnt, current_folder, current_time
+
     cord = prediction.xyxy[0]
     name = prediction.names
-    # print(name)
     size = len(cord)
-    download = False
-    cnt = 0
+    
     for i in range(size - 1):
         XMin, YMin, XMax, YMax, conf, cls = cord[i, :6]
         # print(XMin, YMin, XMax, YMax)
         # print(f"{name[int(cls)]} cord:", cord[i, :5])
         if int(cls) == 0:
-            if conf > 0.8:  # 신뢰도가 일정 수준 이상인 객체만 표시
+            if conf > 0.3:  # 신뢰도가 일정 수준 이상인 객체만 표시
                 cv2.rectangle(image, (int(XMin), int(YMin)), (int(XMax), int(YMax)), (0, 0, 255), 2)
                 cv2.putText(image, f'Overload:{conf:.2f}', (int(XMin), int(YMin) - 10), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2, cv2.LINE_AA)
                 print(f"{name[int(cls)]} cord:", cord[i, :5])

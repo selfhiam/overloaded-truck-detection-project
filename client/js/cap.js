@@ -72,46 +72,51 @@ function addClickEventHandlers() {
 
 // 이미지 클릭 이벤트 핸들러
 function handleImageClick(e) {
-    getImgDetail(e.target.id[-1])
+    getImgDetail(e.target.id.substring(3))
     console.log('클릭된 이미지의 id:', e.target.id);
 }
-
+// img0
 async function getImgDetail(imgNo) {
-    const response = await fetch(`http://127.0.0.1:8000/images/detail?q=${imgNo}`,{
+    const response = await fetch(`http://127.0.0.1:8000/info?q=${imgNo}`,{
         method:'GET',
         headers: {
             'Content-Type': 'application/json',
         }
     })
     if (response.ok){
-        // car img는 src긁어오기
-        const plate = await response.blob();
-        const detail = await response.json();
-        // 이미지가 아니면 크기가 작음
-        if (blob.size < 10) {
-            console.log('no image response')
-        }
-        else {
-            handleResponse(blob, detail, imgNo);
-        }
+        response.json().then((data) => {
+            // car img는 src긁어오기
+            ocr = data.OCR
+            perspective_dir = data.perspective_path
+            date = data.date
 
+            handleDetailResponse(perspective_dir, date, ocr, imgNo);
+        })
     } else {
         console.error('response error');
     }
 }
 
-function handleDetailResponse(img, detail, imgNo) {
+function handleDetailResponse(perspective_dir, date, ocr, imgNo) {
     const subImg = document.querySelector('#sub-img')
     const plate = document.querySelector('#plate')
     const logBox = document.querySelector('.log-box')
-    const imageUrl = URL.createObjectURL(img);
+    // const imageUrl = URL.createObjectURL(img);
 
     subImg.src = getImgSrc(imgNo)
-
-    plate.src = imageUrl
+    if (perspective_dir){
+        plate.src = `http://127.0.0.1:8000/perspective?q=${perspective_dir}`
+        perspective_dir = null
+    }else{
+        plate.textContent = '번호판을 인식하지 못했습니다.'
+    }
+        
     
-    date = detail
-    time = detail
+    day = date.split("_")[0]
+    time = date.split("_")[1]
+    hour = time.split("-")[0]
+    minutes = time.split("-")[1]
+    sec = time.split("-")[2]
 
 
     logBox.innerHTML = `
@@ -120,7 +125,7 @@ function handleDetailResponse(img, detail, imgNo) {
             날짜
         </li>
         <li>
-            ${data}
+            ${day}
         </li>
     </ul>
     <ul>
@@ -128,7 +133,7 @@ function handleDetailResponse(img, detail, imgNo) {
             시간
         </li>
         <li>
-            ${time}
+            ${hour}:${minutes}:${sec}
         </li>
     </ul>   
 `
