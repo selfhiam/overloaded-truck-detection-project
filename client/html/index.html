@@ -14,12 +14,17 @@
     <main>
         <!-- 실시간 감지화면 영역 -->
         <header class="header1">
-            <h2>실시간 감지화면</h2><br>
-            <input type="file" id="videoInput" class="file-input">
-            <button type="button" onclick="uploadVideo(event)" class="upload-btn">업로드</button>
-            
+            <h2>실시간 감지화면</h2>
+            <div class="header-div">
+                <input type="file" id="videoInput" class="file-input">
+                <button type="button" onclick="uploadVideo(event)" class="upload-btn">업로드</button>    
+            </div>
         </header>
         <section class="section1">
+            <div class="title-box">
+                <div class="title">Video</div>
+                <div class="title">Detected</div>
+            </div>
             <div class="realtime-wrap">
                 <!-- 영상 출력 영역-->
                 <div class="img-box">
@@ -38,6 +43,9 @@
             <h2>상세 기록 확인</h2>   
         </header>
         <section class="section2">
+            <div class="title-box">
+                <div class="title">detail</div>
+            </div>
             <div class="detail-wrap">
                 <!-- 이미지 출력 영역 --> 
                 <div class="subimg-box">
