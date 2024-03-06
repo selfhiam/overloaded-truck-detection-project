@@ -27,7 +27,7 @@ section { width: 100%; height: 100%; margin: 20px 0;}
 
 .section2 .subimg-box .img-box2 {display: inline-block; width: 50%; border: solid #1A548F 1px; }
 
-.section2 .subimg-box .plate {display: inline-block; width: 45%; height: 80px; border: solid #1A548F 1px; }
+.section2 .subimg-box .plate {display: inline-block; width: 100%; height: 80px; border: solid #1A548F 1px; }
 
 .section2 .log_box { display: flex; align-items: center; width: 100%; padding: 20px; }
 
@@ -35,12 +35,9 @@ section { width: 100%; height: 100%; margin: 20px 0;}
 
 .section2 .log-box ul li+li { margin-top: 10px; }
 
-.section2 #sub-img { width: 100%; }
-
-.section2 #plate { width: 100%; }
-
-.section2 #plate_box {}
-
+.section2 .plate-wrap {width: 50%; display: flex; flex-direction: column;}
+.section2 .plate-text { display: flex; align-items: center; width: 100%; height: 50%; justify-content: center;}
+.section2 #plate_box { font-size: 30px;}
 /* 공유 반응형 */
 /* 나중에 규격 맞춰야함 -> 거의 맞춤 */
 @media screen and (max-width:312px) {
