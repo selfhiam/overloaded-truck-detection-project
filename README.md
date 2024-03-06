@@ -73,3 +73,5 @@
   2. brew install mupdf swig
   3. pip install https://github.com/pymupdf/PyMuPDF/archive/master.tar.gz
   4. 다시 처음부터 paddlepaddle, paddleocr을 설치하면 됩니다.
+
+* !
