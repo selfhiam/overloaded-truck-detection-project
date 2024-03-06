@@ -16,7 +16,6 @@ function uploadVideo(event) {
         if (response.ok) {
             console.log('Video uploaded successfully');
             const video = document.getElementById('video');
-            console.log(file.name)
             videoUrl = 'http://127.0.0.1:8000/video/?query=' + file.name;
             console.log(videoUrl)
             video.src = videoUrl;
