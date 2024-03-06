@@ -2,9 +2,9 @@
 var q = 0
 
 document.addEventListener('DOMContentLoaded', async () => {
-    setInterval(checkFileOnServer, 5000);
+    setInterval(checkFileOnServer, 6000);
     removeClickEventHandlers();
-    checkFileOnServer()
+    // checkFileOnServer()
 })
 
 async function checkFileOnServer() {
@@ -33,6 +33,8 @@ async function checkFileOnServer() {
 function handleResponse(data, q) {
     makeImgTag(q)
     const imageUrl = URL.createObjectURL(data);
+    // console.log(imageUrl)
+    // console.log('여기다')
     document.getElementById(`img${q}`).src = imageUrl;
 
     console.log('받은 응답:', data); 
@@ -86,9 +88,9 @@ async function getImgDetail(imgNo) {
     if (response.ok){
         response.json().then((data) => {
             // car img는 src긁어오기
-            ocr = data.OCR
-            perspective_dir = data.perspective_path
-            date = data.date
+            const ocr = data.OCR
+            const perspective_dir = data.perspective_path
+            const date = data.date
 
             handleDetailResponse(perspective_dir, date, ocr, imgNo);
         })
@@ -102,13 +104,19 @@ function handleDetailResponse(perspective_dir, date, ocr, imgNo) {
     const plate = document.querySelector('#plate')
     const logBox = document.querySelector('.log-box')
     // const imageUrl = URL.createObjectURL(img);
+    plate.src = false
+    plate_box.textContent = ''
 
     subImg.src = getImgSrc(imgNo)
+    console.log(perspective_dir)
     if (perspective_dir){
         plate.src = `http://127.0.0.1:8000/perspective?q=${perspective_dir}`
-        perspective_dir = null
+        if (ocr){
+            plate_box.textContent = ocr
+        }
     }else{
-        plate.textContent = '번호판을 인식하지 못했습니다.'
+        const plate_box = document.getElementById('plate_box')
+        plate_box.textContent = '번호판을 인식하지 못했습니다.'
     }
         
     

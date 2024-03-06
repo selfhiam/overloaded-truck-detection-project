@@ -51,7 +51,7 @@ def visualize_prediction(image, prediction):
         # print(XMin, YMin, XMax, YMax)
         # print(f"{name[int(cls)]} cord:", cord[i, :5])
         if int(cls) == 0:
-            if conf > 0.3:  # 신뢰도가 일정 수준 이상인 객체만 표시
+            if conf > 0.85:  # 신뢰도가 일정 수준 이상인 객체만 표시
                 cv2.rectangle(image, (int(XMin), int(YMin)), (int(XMax), int(YMax)), (0, 0, 255), 2)
                 cv2.putText(image, f'Overload:{conf:.2f}', (int(XMin), int(YMin) - 10), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 255), 2, cv2.LINE_AA)
                 print(f"{name[int(cls)]} cord:", cord[i, :5])
@@ -73,7 +73,7 @@ def visualize_prediction(image, prediction):
         cnt += 1
         print('다운로드')
     # 5장 저장하면 stop
-    if cnt == 5:
+    if cnt == 3:
         download = False
         cnt = 0
         print('다운로드 끝')
