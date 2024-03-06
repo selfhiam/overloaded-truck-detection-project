@@ -53,3 +53,5 @@ ultralytics==8.1.24
 urllib3==2.2.1
 uvicorn==0.27.1
 wheel==0.42.0
+paddleocr==2.6.0.1
+paddlepaddle==2.6.0
