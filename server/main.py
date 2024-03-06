@@ -73,6 +73,8 @@ async def videoStream(request: Request, query: str = Query(...)):
 async def send_images(request: Request, q: int = Query(...)):
     overload_folders = os.listdir('overload')
     img_cnt = len(overload_folders)
+    print(q)
+    print('이미지 업로드')
 
     if q < img_cnt:
         img_dir = os.path.join('overload', overload_folders[q])

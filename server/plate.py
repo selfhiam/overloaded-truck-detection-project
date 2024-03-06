@@ -23,6 +23,7 @@ def plate_eval_all(img_dir, imgs):
 
         # plate 좌표값으로 perspective 이미지 만드는 함수
         getPerspective(test_img, prediction, img_dir)
+    return 'ok'
 
 def getPerspective(image, prediction, img_dir):
     cord = prediction.xyxy[0]
@@ -40,6 +41,7 @@ def getPerspective(image, prediction, img_dir):
             # 이미지 저장
             print('다운로드')
             cv2.imwrite(os.path.join(img_dir, f'perspective{i}.jpg'), dst)
+    return 'ok'
 
 
 def perspective(img, coord):
