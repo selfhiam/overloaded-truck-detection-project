@@ -1,6 +1,6 @@
 from fastapi import FastAPI, Request, Response, File, UploadFile, Query
 from fastapi.templating import Jinja2Templates
-from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.responses import HTMLResponse, JSONResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
@@ -8,7 +8,7 @@ from typing import List
 from model import get_stream_video
 import shutil
 import os
-# import cv2
+import cv2
 # import numpy as np
 # import base64
 
@@ -19,7 +19,6 @@ app = FastAPI()
 templates = Jinja2Templates(directory='../client/html')
 app.mount("/js", StaticFiles(directory="../client/js"), name="js")
 app.mount("/css", StaticFiles(directory='../client/css'), name='css')
-# app.mount("/img", StaticFiles(directory='img'), name='img')
 
 
 origins = [
@@ -68,6 +67,17 @@ async def upload_video(video: UploadFile = File(...)):
 # 파일 업로드 POST 반응
 @app.get("/video/")
 async def videoStream(request: Request, query: str = Query(...)):
-    print(query)
+    # print(query)
     return StreamingResponse(get_stream_video(query), media_type="multipart/x-mixed-replace; boundary=frame")
 
+@app.get("/images")
+async def send_images(request: Request, q: int = Query(...)):
+    overload_folders = os.listdir('overload')
+    img_cnt = len(overload_folders)
+
+    if q < img_cnt:
+        img_dir = os.path.join('overload', overload_folders[q])
+        imgs = os.listdir(img_dir)
+        img = cv2.imread(os.path.join(img_dir, imgs[0]))
+
+        return FileResponse(os.path.join(img_dir, imgs[0]), media_type='image/jpg')

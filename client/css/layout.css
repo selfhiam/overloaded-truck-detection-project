@@ -10,7 +10,7 @@ section { width: 100%; height: 100%; margin: 20px 0; border-top: solid #1A548F 1
 
 .section1 .realtime-wrap { display: flex; flex-direction: row; justify-content: space-between; }
 .section1 .realtime-wrap .img-box { width: 48.5%; height: 410px; border: solid #1A548F 5px; display: flex; flex-flow: nowrap column; justify-content: center; align-items: center; }
-
+.section1 #video { width: 100%; }
 .section1 .realtime-wrap .img-box #video { width: 100%;  height: 100%; }
 
 .section1 .realtime-wrap .cap-box { width: 48.5%; height: 410px; border: solid #1A548F 1px; overflow-y: scroll; }

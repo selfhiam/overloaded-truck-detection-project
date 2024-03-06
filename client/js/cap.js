@@ -1,5 +1,5 @@
 
-var q = 1
+var q = 0
 
 document.addEventListener('DOMContentLoaded', async () => {
     setInterval(checkFileOnServer, 5000);
@@ -47,8 +47,6 @@ function makeImgTag(q) {
     imgTag.id = `img${q}`
     imgTag.src = ""
     imgTag.alt = "" 
-    imgTag.style.width = "160px"
-    imgTag.style.height = "90px"
 
     liTag.appendChild(imgTag)
     listBox.appendChild(liTag)
