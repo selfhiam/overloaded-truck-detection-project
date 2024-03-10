@@ -91,6 +91,6 @@ pathlib.PosixPath = pathlib.WindowsPath
 <br/>
 
 7. PaddleOCR로 번호판 글자 인식
-![image](/OCR.png)
+![image](/OCR.PNG)
 
-* ![발표자료](https://www.canva.com/design/DAF9_PK0D_c/LUKx7i06_HzNRvd0teBICg/view?utm_content=DAF9_PK0D_c&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+* [발표자료](https://www.canva.com/design/DAF9_PK0D_c/LUKx7i06_HzNRvd0teBICg/view?utm_content=DAF9_PK0D_c&utm_campaign=designshare&utm_medium=link&utm_source=editor)
